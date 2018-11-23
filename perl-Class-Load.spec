@@ -4,7 +4,7 @@
 #
 Name     : perl-Class-Load
 Version  : 0.25
-Release  : 2
+Release  : 3
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-0.25.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-0.25.tar.gz
 Summary  : 'A working (require "Class::Name") and more'
@@ -17,6 +17,7 @@ BuildRequires : perl(Module::Implementation)
 BuildRequires : perl(Module::Runtime)
 BuildRequires : perl(Package::Stash)
 BuildRequires : perl(Params::Util)
+BuildRequires : perl(Sub::Install)
 BuildRequires : perl(Test::Fatal)
 BuildRequires : perl(Test::Needs)
 BuildRequires : perl(Try::Tiny)
@@ -82,8 +83,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.26.1/Class/Load.pm
-/usr/lib/perl5/vendor_perl/5.26.1/Class/Load/PP.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Class/Load.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Class/Load/PP.pm
 
 %files dev
 %defattr(-,root,root,-)
