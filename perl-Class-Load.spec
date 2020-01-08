@@ -4,13 +4,14 @@
 #
 Name     : perl-Class-Load
 Version  : 0.25
-Release  : 10
+Release  : 11
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-0.25.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-0.25.tar.gz
-Summary  : a working (require 'Class::Name') and more
+Summary  : 'A working (require "Class::Name") and more'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
 Requires: perl-Class-Load-license = %{version}-%{release}
+Requires: perl-Class-Load-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Data::OptList)
 BuildRequires : perl(Module::Implementation)
@@ -45,14 +46,24 @@ Group: Default
 license components for the perl-Class-Load package.
 
 
+%package perl
+Summary: perl components for the perl-Class-Load package.
+Group: Default
+Requires: perl-Class-Load = %{version}-%{release}
+
+%description perl
+perl components for the perl-Class-Load package.
+
+
 %prep
 %setup -q -n Class-Load-0.25
+cd %{_builddir}/Class-Load-0.25
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -62,7 +73,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -71,7 +82,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Class-Load
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Class-Load/LICENSE
+cp %{_builddir}/Class-Load-0.25/LICENSE %{buildroot}/usr/share/package-licenses/perl-Class-Load/02baa9a7c1e8cd4e565c56a6af13a63d650805ef
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -84,8 +95,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Class/Load.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Class/Load/PP.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -93,4 +102,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Class-Load/LICENSE
+/usr/share/package-licenses/perl-Class-Load/02baa9a7c1e8cd4e565c56a6af13a63d650805ef
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Class/Load.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Class/Load/PP.pm
