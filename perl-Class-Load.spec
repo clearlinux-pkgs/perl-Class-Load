@@ -4,7 +4,7 @@
 #
 Name     : perl-Class-Load
 Version  : 0.25
-Release  : 20
+Release  : 21
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-0.25.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-0.25.tar.gz
 Summary  : 'A working (require "Class::Name") and more'
@@ -106,5 +106,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/Class/Load.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Class/Load/PP.pm
+/usr/lib/perl5/*
