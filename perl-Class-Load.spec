@@ -7,7 +7,7 @@
 #
 Name     : perl-Class-Load
 Version  : 0.25
-Release  : 27
+Release  : 28
 URL      : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-0.25.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Load-0.25.tar.gz
 Summary  : 'A working (require "Class::Name") and more'
